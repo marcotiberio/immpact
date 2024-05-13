@@ -1,0 +1,14 @@
+<flynt-component load:on="visible" name="BlockImage">
+  <div class="w-full mx-auto {% if wideImage %} pl-sm md:pl-md lg:pl-lg {% else %} max-w-screen-xl px-sm md:px-md lg:px-lg {% endif %} overflow-scroll">
+    <figure class="figure {% if wideImage %} w-[1000px] h-[320px] md:w-[2000px] md:h-[640px] {% endif %} overflow-scroll">
+      {% if image %}
+        <img class="figure-image object-cover w-full"
+          src="{{ image.src }}"
+          alt="{{ image.alt|e }}">
+      {% endif %}
+      {% if image.caption %}
+        <figcaption class="caption">{{ image.caption|e }}</figcaption>
+      {% endif %}
+    </figure>
+  </div>
+</flynt-component>

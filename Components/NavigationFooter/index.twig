@@ -1,0 +1,54 @@
+<flynt-component load:on="visible" name="NavigationFooter" class="bg-beige">
+  <div class="w-full p-sm lg:py-md lg:pr-lg lg:pl-0 flex flex-row justify-between items-center">
+    <div class="w-full flex flex-col md:grid grid-cols-2 lg:items-end justify-between gap-md md:gap-xxl">      
+      {# Left #}
+      {% if logoFooter %}
+      <div class="flex justify-start items-center">
+        <div class="flex">
+          <img class="logo lazyload w-[60vw] h-[60px]"
+            src="{{ logoFooter.src | resize(32) }}"
+            data-srcset="{{function('wp_get_attachment_image_srcset', logoFooter.id)}}"
+            data-sizes="auto"
+            height="100px"
+            width="100px"
+            alt="{{ logoFooter.title }}">
+        </div>
+      </div>
+      {% endif %}
+      {# Right #}
+      <div class="flex flex-col gap-sm sm:gap-lg items-end justify-between text-darkblue">
+        {# <div class="flex flex-col items-end gap-xs">
+          {% if socialMediaTitle %}
+            <div class="">{{ socialMediaTitle }}</div>
+          {% endif %}
+          <div class="flex flex-row gap-[5px]">
+            {% for socials in social %}
+              <a class="socialList-link" href="{{ socials.url }}" target="_blank" aria-label="{{ socials.platform.label }}">
+                <div class="text-bgColor [&_circle]:hover:fill-hoverButtonColor" data-icon="{{ socials.platform.label|lower|replace({'/': "", ' ': ""}) }}"></div>
+              </a>
+            {% endfor %}
+          </div>
+        </div> #}
+        {% if menu %}
+          <nav 
+            class="navigation w-full flex justify-start md:justify-end items-end md:items-center" 
+            {# style="transform: translateY(20px)"  #}
+            aria-label="{{ labels.ariaLabel }}">
+            {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
+            {# {% if socialFooterHtml %}
+              <div class="block md:hidden socialmedia wysiwyg">
+                {{ socialFooterHtml|e('wp_kses_post') }}
+              </div>
+            {% endif %} #}
+          </nav>
+        {% endif %}
+      </div>
+      <div class="flex flex-row justify-end text-darkblue col-start-1 col-end-3 text-right">
+        {% if copyrightsFooterHtml %}
+          <div class="font-bodyMenu">{{ copyrightsFooterHtml }}</div>
+        {% endif %}
+      </div>
+      {% include 'Partials/_backtotop.twig' %}
+    </div>
+  </div>
+</flynt-component>

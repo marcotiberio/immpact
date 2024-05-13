@@ -1,0 +1,25 @@
+flynt-component[name='BlockImage'] {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    @apply ml-sm;
+    @apply sm:ml-md;
+    @apply md:ml-lg;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--blue);
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--blue);
+  }
+
+}
